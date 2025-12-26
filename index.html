@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dr. Nitin Sachdeva – Decision Sciences Architect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Dr. Nitin Sachdeva – Decision Sciences Architect specializing in AI, Machine Learning, Optimization, and Decision Science for manufacturing, healthcare, retail, and financial services."
+  />
+  <!-- Google Font (optional, but recommended) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --bg-alt: #ffffff;
+      --bg-dark: #050816;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.12);
+      --border-subtle: #e5e7eb;
+      --card-radius: 14px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(247, 247, 251, 0.88);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1d4ed8, #22c55e);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .nav-title-main {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .nav-title-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.15rem 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-bottom-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .nav-links .nav-cta {
+      padding: 0.4rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.4);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 840px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+      }
+    }
+
+    /* LAYOUT */
+
+    main {
+      flex: 1;
+    }
+
+    section {
+      padding: 3.5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 680px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-top: 4.5rem;
+      padding-bottom: 2.5rem;
+      background: radial-gradient(circle at top left, #e0e7ff 0, #f7f7fb 45%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.4fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-size: 2.7rem;
+      line-height: 1.03;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-body {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 620px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.75rem;
+      align-items: center;
+      margin-top: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-meta strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      margin-top: 1.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-ghost:hover {
+      background: #e5e7eb;
+      text-decoration: none;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      text-decoration: none;
+    }
+
+    .hero-links a:hover {
+      background: rgba(37, 99, 235, 0.06);
+      border-color: var(--accent);
+    }
+
+    .hero-aside {
+      justify-self: center;
+    }
+
+    .hero-card {
+      background: var(--bg-alt);
+      border-radius: 18px;
+      padding: 1.25rem 1.35rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      max-width: 320px;
+    }
+
+    .hero-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      object-fit: cover;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #1d4ed8, #22c55e);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.02rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-aside {
+        justify-self: flex-start;
+      }
+    }
+
+    /* FEATURED IN */
+
+    .featured {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .featured-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .featured-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+    }
+
+    .featured-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.5rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .featured-chip {
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+      white-space: nowrap;
+    }
+
+    /* OFFER GRID */
+
+    .offers {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .offers-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .offer-card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .offer-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .offer-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .offer-footer {
+      margin-top: auto;
+      font-size: 0.82rem;
+    }
+
+    .offer-footer a {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .offer-footer a::after {
+      content: " →";
+      font-size: 0.82rem;
+    }
+
+    .offer-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .offers-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* DEFINITION BLOCK */
+
+    .definition {
+      padding-top: 2.5rem;
+      padding-bottom: 3rem;
+    }
+
+    .definition-card {
+      background: var(--bg-alt);
+      border-radius: 18px;
+      padding: 1.5rem 1.5rem 1.6rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      max-width: 880px;
+    }
+
+    .definition-card h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1.3rem;
+    }
+
+    .definition-card h3 {
+      margin: 0 0 0.9rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .definition-card p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    /* GENERIC CONTENT SECTIONS */
+
+    .content-section {
+      padding-top: 2.7rem;
+      padding-bottom: 2.7rem;
+    }
+
+    .columns-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.3fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .columns-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* DOMAINS */
+
+    .domains-grid {
+      margin-top: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 780px) {
+      .domains-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .domain-card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .domain-card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    .domain-card p {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* CASE STUDIES */
+
+    .cases-grid {
+      margin-top: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .cases-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .case-card {
+      background: var(--bg-alt);
+      border-radius: var(--card-radius);
+      padding: 1rem 1.1rem 1.1rem;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .case-tag {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .case-card h3 {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .case-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .case-outcome {
+      font-size: 0.86rem;
+      margin-top: 0.15rem;
+      color: var(--text);
+    }
+
+    /* INTELLECTUAL / THOUGHT / WORK WITH ME */
+
+    .bullet-list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .bullet-list li + li {
+      margin-top: 0.2rem;
+    }
+
+    .two-up {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+      gap: 1.6rem;
+    }
+
+    @media (max-width: 780px) {
+      .two-up {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* CONTACT / FOOTER */
+
+    .contact-section {
+      background: var(--bg-alt);
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .contact-card {
+      background: #f9fafb;
+      border-radius: 16px;
+      padding: 1.5rem 1.6rem 1.7rem;
+      border: 1px solid var(--border-subtle);
+      max-width: 720px;
+    }
+
+    .contact-card p {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-meta {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.3rem;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 1.2rem 1.5rem 1.6rem;
+      border-top: 1px solid var(--border-subtle);
+      background: #f9fafb;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <div class="nav-avatar">
+            <!-- Replace profile.jpg with your actual headshot file -->
+            <img src="profile.jpg" alt="Dr. Nitin Sachdeva" />
+          </div>
+          <div class="nav-title">
+            <div class="nav-title-main">Dr. Nitin Sachdeva</div>
+            <div class="nav-title-sub">Decision Sciences Architect</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#domains">Domains</a>
+          <a href="#cases">Case Studies</a>
+          <a href="#intellectual">Intellectual Capital</a>
+          <a href="#work-with-me">Work With Me</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="top" class="hero">
+        <div class="section-inner hero-grid">
+          <div>
+            <div class="hero-kicker">Decision Science • AI • Optimization</div>
+            <h1 class="hero-title">Decision Sciences Architect</h1>
+            <div class="hero-subtitle">
+              AI, ML, and Optimization for Enterprise-Scale Decisions
+            </div>
+            <p class="hero-body">
+              I design decision intelligence systems where AI, optimization, and
+              statistics meet real-world constraints — and where decisions
+              actually move money, capacity, risk, and outcomes. I specialize in
+              manufacturing, healthcare, retail, and financial services, with a
+              focus on high-stakes, multi-stakeholder decisions.
+            </p>
+
+            <div class="hero-meta">
+              <span><strong>PhD</strong> in Operations Research</span>
+              <span><strong>40+ publications</strong> in OR & analytics</span>
+              <span><strong>19+ years</strong> across industry & academia</span>
+              <span><strong>India-first</strong> with global engagements</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#work-with-me" class="btn btn-primary">
+                Discuss a Decision Problem
+              </a>
+              <a href="#cases" class="btn btn-ghost">
+                Browse Selected Decision Systems
+              </a>
+            </div>
+
+            <div class="hero-links">
+              <a
+                href="https://www.linkedin.com/in/nitin-sachdeva-72b2709/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+              <a
+                href="https://scholar.google.com/citations?user=_OOcKpAAAAAJ&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Google Scholar</a
+              >
+              <!-- Add more external links as needed -->
+            </div>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="hero-card">
+              <img
+                src="profile.jpg"
+                alt="Dr. Nitin Sachdeva"
+                loading="lazy"
+              />
+              <h3>Enterprise Decision Systems</h3>
+              <p>
+                From demand forecasting and multi-echelon inventory optimization
+                to marketing mix modeling and healthcare operations, I help
+                organizations move beyond isolated analytics into governed,
+                end-to-end decision systems.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- FEATURED / TRUSTED BY -->
+      <section class="featured">
+        <div class="section-inner featured-inner">
+          <div class="featured-label">Trusted by & associated with</div>
+          <div class="featured-logos">
+            <span class="featured-chip">TVS Motor Company</span>
+            <span class="featured-chip">Protiviti</span>
+            <span class="featured-chip">Leading Indian B-Schools</span>
+            <span class="featured-chip">Hero Vired</span>
+            <span class="featured-chip">Great Lakes</span>
+            <span class="featured-chip">IIM & industry conferences</span>
+            <span class="featured-chip">Healthcare & manufacturing clients</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- OFFER BLOCKS (Advisory / Systems / Programs / Resources) -->
+      <section class="offers">
+        <div class="section-inner">
+          <div class="section-kicker">Engage</div>
+          <h2 class="section-title">Upgrade your decision systems</h2>
+          <p class="section-lead">
+            I work with CXOs and senior teams on decision architecture,
+            model-based systems, and capability building — where uncertainty,
+            constraints, and trade-offs are explicit, not hidden.
+          </p>
+
+          <div class="offers-grid">
+            <article class="offer-card">
+              <div>
+                <div class="offer-title">Advisory</div>
+                <div class="offer-body">
+                  Discreet advisory for CXOs and boards on complex, high-stakes
+                  decisions in manufacturing, healthcare, retail, and finance.
+                  Focused on decision clarity, downside control, and execution
+                  realism.
+                </div>
+              </div>
+              <div class="offer-footer">
+                <a href="#work-with-me">Request advisory</a>
+              </div>
+            </article>
+
+            <article class="offer-card">
+              <div>
+                <div class="offer-title">Enterprise Decision Systems</div>
+                <div class="offer-body">
+                  Design and implementation of integrated systems that combine
+                  forecasting, optimization, simulation, and governance —
+                  including MEIO, MMM+MTA, allocation, scheduling, and network
+                  design.
+                </div>
+              </div>
+              <div class="offer-footer">
+                <a href="#cases">Explore decision systems</a>
+              </div>
+            </article>
+
+            <article class="offer-card">
+              <div>
+                <div class="offer-title">Executive Programs</div>
+                <div class="offer-body">
+                  Closed-door, senior-only programs on AI, ML, OR, and
+                  decision-making — tailored for manufacturing, pharma,
+                  healthcare, and retail leaders who need depth without jargon.
+                </div>
+              </div>
+              <div class="offer-footer">
+                <a href="#work-with-me">Discuss a program</a>
+              </div>
+            </article>
+
+            <article class="offer-card">
+              <div>
+                <div class="offer-title">Resources & Thought Leadership</div>
+                <div class="offer-body">
+                  Research, case studies, frameworks, and teaching material
+                  from 40+ publications and years of training MBAs, engineers,
+                  and executives in AI, OR, and decision science.
+                </div>
+              </div>
+              <div class="offer-footer">
+                <a href="#intellectual">View intellectual capital</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEFINITION / DECISION SCIENCE STATEMENT -->
+      <section class="definition">
+        <div class="section-inner">
+          <div class="definition-card">
+            <h2>What is Enterprise Decision Science?</h2>
+            <h3>
+              The discipline of turning information into better actions at
+              enterprise scale, under uncertainty and constraints.
+            </h3>
+            <p>
+              For me, decision science is not about chasing perfect models. It
+              is about designing systems where uncertainty is explicit, trade-offs
+              are transparent, and decisions are made in a way that leadership
+              can understand, govern, and trust — even when conditions change.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT & DECISION PHILOSOPHY -->
+      <section id="about" class="content-section">
+        <div class="section-inner columns-2">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">About & Decision Philosophy</h2>
+            <p>
+              I work at the intersection of AI, optimization, and decision
+              science, focusing on problems where scale, uncertainty, and
+              constraints make intuition and isolated analytics unreliable.
+            </p>
+            <p>
+              My background spans academic research (PhD in Operations Research,
+              40+ publications) and deep industry application in manufacturing,
+              healthcare, retail, and financial services — including leadership
+              roles shaping enterprise decision systems.
+            </p>
+            <p>
+              I am typically engaged when organizations face decisions that cut
+              across functions, involve explicit trade-offs, and carry material
+              business or public impact.
+            </p>
+          </div>
+          <div>
+            <h3 class="section-title" style="font-size:1.05rem;">Decision Philosophy</h3>
+            <ul class="bullet-list">
+              <li>Decisions matter more than predictions.</li>
+              <li>Constraints define reality &mdash; they cannot be an afterthought.</li>
+              <li>Uncertainty must be explicit, not hidden in single-number outputs.</li>
+              <li>
+                Models must survive governance, not just validation metrics.
+              </li>
+              <li>
+                Systems should make trade-offs visible, not bury them in tuning
+                and dashboards.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOMAINS -->
+      <section id="domains" class="content-section">
+        <div class="section-inner">
+          <div class="section-kicker">Domains</div>
+          <h2 class="section-title">Decision Science Domains</h2>
+          <p class="section-lead">
+            I am usually called when traditional analytics and dashboards are no
+            longer enough &mdash; and when decisions span multiple time horizons,
+            constraints, and stakeholders.
+          </p>
+
+          <div class="domains-grid">
+            <article class="domain-card">
+              <h3>Enterprise Decision Systems</h3>
+              <p>
+                Required when decisions span multiple functions, time horizons,
+                and constraints — and when local optimization or isolated
+                analytics begins to break the system. Signals include trade-offs
+                between cost, service, and risk, cascading decisions across
+                silos, and unclear accountability for outcomes.
+              </p>
+            </article>
+
+            <article class="domain-card">
+              <h3>Hybrid ML + Optimization Systems</h3>
+              <p>
+                Required when prediction alone is insufficient — and when
+                decisions must be made under constraints, uncertainty, and
+                competing objectives. Signals include models that perform on
+                paper but fail to improve outcomes, or parameter settings that
+                cannot be tuned manually at scale.
+              </p>
+            </article>
+
+            <article class="domain-card">
+              <h3>Operations Research & Mathematical Modeling</h3>
+              <p>
+                Required when problems involve combinatorial complexity,
+                interdependent choices, and system-level trade-offs that
+                intuition and heuristics cannot reliably resolve — such as
+                scheduling, allocation, routing, and multi-stage planning under
+                constraints.
+              </p>
+            </article>
+
+            <article class="domain-card">
+              <h3>Statistical Modeling & Uncertainty Quantification</h3>
+              <p>
+                Required when uncertainty materially affects decisions and point
+                estimates create false confidence. Critical where leadership
+                decisions depend on confidence intervals, risk bounds, and
+                downside protection rather than a single forecasted number.
+              </p>
+            </article>
+          </div>
+
+          <div class="pill-list">
+            <span class="pill">Manufacturing</span>
+            <span class="pill">Healthcare & Hospitals</span>
+            <span class="pill">Retail & Channel Networks</span>
+            <span class="pill">Financial Services & Risk</span>
+            <span class="pill">Public Systems & Policy</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDIES / SELECTED DECISION SYSTEMS -->
+      <section id="cases" class="content-section">
+        <div class="section-inner">
+          <div class="section-kicker">Selected Work</div>
+          <h2 class="section-title">Selected Decision Systems</h2>
+          <p class="section-lead">
+            A small sample of systems I have designed or led, where decisions
+            were high-stakes, uncertainty was real, and outcomes mattered.
+          </p>
+
+          <div class="cases-grid">
+            <!-- Demand Forecasting + MEIO -->
+            <article class="case-card">
+              <div class="case-tag">
+                Manufacturing &middot; Forecasting & MEIO
+              </div>
+              <h3>Demand Forecasting + End-to-End Inventory Optimization (TVS)</h3>
+              <div class="case-body">
+                Designed an end-to-end decision system integrating demand
+                forecasting, inventory policy design, and multi-echelon
+                optimization across plants, warehouses, and dealer networks.
+              </div>
+              <div class="case-outcome">
+                &rarr; Enabled system-level optimization of service, working
+                capital, and replenishment under demand uncertainty.
+              </div>
+            </article>
+
+            <!-- MMM + MTA -->
+            <article class="case-card">
+              <div class="case-tag">
+                Manufacturing &middot; Marketing Investment Decisions
+              </div>
+              <h3>Marketing Mix Modeling (MMM) + MTA Decision Framework — TVS</h3>
+              <div class="case-body">
+                Built an integrated MMM + MTA framework to guide large-scale
+                marketing budget allocations under limited experimentation,
+                distinguishing portfolio-level and within-channel decisions with
+                Bayesian MMM and MTA.
+              </div>
+              <div class="case-outcome">
+                &rarr; Enabled leadership to reallocate spend with controlled
+                downside risk and sustained volume stability, without fragile
+                causal claims.
+              </div>
+            </article>
+
+            <!-- Paint Transfer Efficiency -->
+            <article class="case-card">
+              <div class="case-tag">
+                Automotive &middot; Process Optimization
+              </div>
+              <h3>Paint Transfer Efficiency Optimization — Hybrid ML + OR + DOE</h3>
+              <div class="case-body">
+                Designed a hybrid system combining Design of Experiments,
+                machine learning, and optimization to improve paint transfer
+                efficiency under real shop-floor constraints.
+              </div>
+              <div class="case-outcome">
+                &rarr; Delivered significant annual material cost savings with
+                stable quality outcomes.
+              </div>
+            </article>
+
+            <!-- Healthcare DEA -->
+            <article class="case-card">
+              <div class="case-tag">
+                Healthcare &middot; Center Effectiveness
+              </div>
+              <h3>Healthcare Center Effectiveness using DEA</h3>
+              <div class="case-body">
+                Built a Data Envelopment Analysis framework to assess relative
+                efficiency and effectiveness of healthcare centers across
+                throughput, resource utilization, and service outcomes.
+              </div>
+              <div class="case-outcome">
+                &rarr; Enabled leadership to identify structurally
+                underperforming centers and prioritize targeted interventions.
+              </div>
+            </article>
+
+            <!-- Healthcare Queuing + Simulation -->
+            <article class="case-card">
+              <div class="case-tag">
+                Healthcare &middot; Patient Flow & Experience
+              </div>
+              <h3>Patient Waiting Time Reduction using Queuing & Simulation</h3>
+              <div class="case-body">
+                Developed a queuing and simulation model (AnyLogic) to analyze
+                patient flow, bottlenecks, and service time variability across
+                outpatient processes, testing alternate staffing and scheduling
+                policies.
+              </div>
+              <div class="case-outcome">
+                &rarr; Reduced waiting times and congestion without proportional
+                staffing increases, improving throughput and experience.
+              </div>
+            </article>
+
+            <!-- COVID Forecasting -->
+            <article class="case-card">
+              <div class="case-tag">
+                Public Health &middot; Pandemic Forecasting
+              </div>
+              <h3>COVID-19 Pandemic Forecasting & Scenario Modeling</h3>
+              <div class="case-body">
+                Co-designed a forecasting and scenario-analysis system during
+                early COVID-19 waves using epidemiological and time-series
+                modeling to project trajectories under different interventions.
+              </div>
+              <div class="case-outcome">
+                &rarr; Projections used for public communication and stakeholder
+                briefings during a period of extreme uncertainty.
+              </div>
+            </article>
+
+            <!-- Telecom Fraud -->
+            <article class="case-card">
+              <div class="case-tag">
+                Telecom &middot; Fraud Analytics
+              </div>
+              <h3>Telecom Fraud Detection — Wangiri (Single-Ring) Fraud</h3>
+              <div class="case-body">
+                Built a near real-time fraud detection system on call detail
+                records, combining probabilistic scoring and ML to prioritize
+                alerts and reduce false positives.
+              </div>
+              <div class="case-outcome">
+                &rarr; Reduced detection cycle time and analyst effort with
+                materially improved fraud response.
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTELLECTUAL CAPITAL -->
+      <section id="intellectual" class="content-section">
+        <div class="section-inner">
+          <div class="section-kicker">Intellectual Capital</div>
+          <h2 class="section-title">Research & Frameworks</h2>
+
+          <div class="two-up">
+            <div>
+              <h3>Research & Publications</h3>
+              <p>
+                PhD in Operations Research with over 40 peer-reviewed
+                publications across optimization, analytics, and applied
+                decision science, spanning manufacturing, healthcare, public
+                systems, and enterprise decision-making.
+              </p>
+              <p>
+                <a
+                  href="https://scholar.google.com/citations?user=_OOcKpAAAAAJ&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >View Google Scholar profile</a
+                >
+              </p>
+            </div>
+            <div>
+              <h3>Proprietary Decision Science Frameworks</h3>
+              <ul class="bullet-list">
+                <li>Enterprise Decision Architecture Framework</li>
+                <li>Hybrid ML–Optimization System Design Framework</li>
+                <li>Statistical Modeling & Validation Framework</li>
+                <li>Decision Risk & Model Governance Framework</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="two-up" style="margin-top: 2rem;">
+            <div>
+              <h3>Governance-First Modeling</h3>
+              <p>
+                Models are treated as decision assets, not analytical artifacts:
+                scoped to the decision being made, validated against decision
+                risk, monitored in production, and governed for responsible and
+                sustained use.
+              </p>
+            </div>
+            <div>
+              <h3>Teaching & Capacity Building</h3>
+              <p>
+                Years of teaching and training in ML, OR, SCM, OM, Business
+                Simulation, AI, Business Statistics, Risk Analytics, Deep
+                Learning, and GenAI across institutions such as Amity, IIFT,
+                FIIB, IMT Ghaziabad, IMT CDL, Hero Vired, Great Lakes, and
+                others.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- THOUGHT LEADERSHIP -->
+      <section id="thought" class="content-section">
+        <div class="section-inner">
+          <div class="section-kicker">Thought Leadership</div>
+          <h2 class="section-title">Perspectives & Engagements</h2>
+          <p class="section-lead">
+            I regularly engage with senior leaders, academic forums, and
+            industry platforms to share perspectives on decision-making at the
+            intersection of AI, optimization, and operations — especially under
+            uncertainty and real-world constraints.
+          </p>
+
+          <ul class="bullet-list">
+            <li>Invited keynotes and executive forums in analytics and OR.</li>
+            <li>
+              Sessions and workshops for manufacturing, healthcare, and retail
+              leaders.
+            </li>
+            <li>
+              Contributions to conferences and practitioner communities focused
+              on operations research and AI in industry.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- WORK WITH ME -->
+      <section id="work-with-me" class="content-section">
+        <div class="section-inner">
+          <div class="section-kicker">Engage</div>
+          <h2 class="section-title">Work With Me</h2>
+          <p class="section-lead">
+            I engage selectively with senior leaders and institutions on
+            high-stakes decision problems involving scale, uncertainty, and
+            strategic trade-offs. Engagements are advisory-led, outcome-focused,
+            and intentionally limited.
+          </p>
+
+          <div class="two-up">
+            <div>
+              <h3>Modes of Engagement</h3>
+              <ul class="bullet-list">
+                <li>
+                  <strong>Enterprise Decision Consulting</strong> &mdash;
+                  End-to-end design of decision systems for complex operational,
+                  supply chain, healthcare, and commercial problems where
+                  standard analytics approaches break down.
+                </li>
+                <li>
+                  <strong>Executive Advisory Retainers</strong> &mdash; Ongoing
+                  advisory support for CXOs and leadership teams on decision
+                  architecture, model governance, and strategic trade-offs under
+                  uncertainty.
+                </li>
+                <li>
+                  <strong>Executive Capability Programs</strong> &mdash;
+                  Closed-door, senior-only programs focused on decision science
+                  maturity, not generic training.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>When to Reach Out</h3>
+              <ul class="bullet-list">
+                <li>
+                  When decisions cut across functions and existing reports or
+                  dashboards are no longer sufficient.
+                </li>
+                <li>
+                  When you need to integrate AI, ML, and OR into governed
+                  decision systems, not standalone pilots.
+                </li>
+                <li>
+                  When you want to build internal capability that understands
+                  both mathematics and business reality.
+                </li>
+              </ul>
+              <p style="margin-top:0.8rem;">
+                If this sounds like your context, a short, structured
+                conversation is usually the best starting point.
+              </p>
+              <p>
+                <a href="#contact" class="btn btn-primary"
+                  >Request a conversation</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="contact-section">
+        <div class="section-inner">
+          <div class="contact-card">
+            <h2 class="section-title">Contact</h2>
+            <p>
+              For senior leaders and institutions seeking a confidential
+              discussion on complex decision challenges. Conversations are
+              advisory in nature and treated with discretion.
+            </p>
+
+            <div class="contact-meta">
+              <span>
+                Email:
+                <a href="mailto:nitin.sachdeva.ds@gmail.com"
+                  >nitin.sachdeva.ds@gmail.com</a
+                >
+              </span>
+              <span>
+                LinkedIn:
+                <a
+                  href="https://www.linkedin.com/in/nitin-sachdeva-72b2709/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Profile</a
+                >
+              </span>
+              <span>
+                Location: Bangalore, India (India-first with global
+                collaborations)
+              </span>
+            </div>
+
+            <p style="margin-top:1.4rem;">
+              Please share brief context on your organization, the decision or
+              system in question, and the timeframe in which you are operating.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          &copy; <span id="year"></span> Dr. Nitin Sachdeva. All rights
+          reserved.
+        </div>
+        <div class="footer-links">
+          <a
+            href="https://www.linkedin.com/in/nitin-sachdeva-72b2709/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+          <a
+            href="https://scholar.google.com/citations?user=_OOcKpAAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Google Scholar</a
+          >
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple year injector for footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
