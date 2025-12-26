@@ -19,19 +19,24 @@
 
   <style>
     :root {
-      --bg: #050816;
-      --bg-section: #070b1f;
-      --bg-alt: #0b1024;
-      --panel: #0f172a;
-      --panel-soft: #111827;
+      --bg-body: #0b1120;
+      --bg-hero: radial-gradient(circle at top, #111827 0, #020617 55%, #020617 100%);
+      --bg-page: #f3f4f6;
+      --bg-light: #ffffff;
+      --bg-panel-dark: #0f172a;
+      --bg-panel-soft: #111827;
+      --text-dark: #020617;
       --text: #f9fafb;
       --text-muted: #9ca3af;
+      --text-muted-dark: #4b5563;
       --accent: #38bdf8;
       --accent-soft: rgba(56, 189, 248, 0.12);
       --accent-strong: #06b6d4;
-      --border-subtle: rgba(148, 163, 184, 0.4);
+      --border-subtle-dark: rgba(148, 163, 184, 0.4);
+      --border-subtle-light: #e5e7eb;
       --card-radius: 16px;
-      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.65);
+      --shadow-soft-dark: 0 24px 60px rgba(15, 23, 42, 0.65);
+      --shadow-soft-light: 0 18px 40px rgba(15, 23, 42, 0.18);
       --max-width: 1120px;
     }
 
@@ -44,7 +49,7 @@
       padding: 0;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 45%, #020617 100%);
+      background: var(--bg-page);
       color: var(--text);
       scroll-behavior: smooth;
     }
@@ -66,6 +71,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background: var(--bg-page);
     }
 
     main {
@@ -85,7 +91,7 @@
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: var(--accent);
+      color: var(--accent-strong);
       font-weight: 500;
       margin-bottom: 0.9rem;
     }
@@ -94,11 +100,12 @@
       font-size: 1.45rem;
       font-weight: 600;
       margin-bottom: 0.6rem;
+      color: var(--text-dark);
     }
 
     .section-lead {
       font-size: 0.98rem;
-      color: var(--text-muted);
+      color: var(--text-muted-dark);
       max-width: 720px;
     }
 
@@ -111,10 +118,10 @@
       backdrop-filter: blur(24px);
       background: linear-gradient(
         to bottom,
-        rgba(2, 6, 23, 0.95),
-        rgba(2, 6, 23, 0.8)
+        rgba(2, 6, 23, 0.97),
+        rgba(2, 6, 23, 0.9)
       );
-      border-bottom: 1px solid rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
     }
 
     .nav-inner {
@@ -155,6 +162,7 @@
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      color: var(--text);
     }
 
     .nav-title-sub {
@@ -210,6 +218,8 @@
 
     .hero {
       padding: 4.5rem 1.5rem 3rem;
+      background: var(--bg-hero);
+      color: var(--text);
     }
 
     .hero-grid {
@@ -339,7 +349,7 @@
       border-radius: 20px;
       padding: 1.4rem 1.5rem;
       border: 1px solid rgba(148, 163, 184, 0.55);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--shadow-soft-dark);
       max-width: 320px;
     }
 
@@ -355,6 +365,7 @@
     .hero-card h3 {
       margin: 0 0 0.4rem;
       font-size: 1.02rem;
+      color: var(--text);
     }
 
     .hero-card p {
@@ -375,24 +386,26 @@
     /* FEATURED */
 
     .featured {
-      padding: 1.2rem 1.5rem 2.2rem;
+      padding: 1.6rem 1.5rem 2.2rem;
+      background: #020617;
+      color: var(--text-muted);
     }
 
     .featured-inner {
       max-width: var(--max-width);
       margin: 0 auto;
       border-top: 1px solid rgba(31, 41, 55, 0.9);
-      padding-top: 1.4rem;
+      padding-top: 1.2rem;
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: 0.7rem;
     }
 
     .featured-label {
       font-size: 0.8rem;
-      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.22em;
+      color: var(--text-muted);
     }
 
     .featured-logos {
@@ -410,18 +423,31 @@
       color: var(--text-muted);
     }
 
-    /* PANELS / GENERIC LAYOUTS */
+    /* LIGHT SECTIONS */
 
-    .content-section {
-      background: radial-gradient(circle at top left, #020617 0, #020617 70%);
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
+    .content-section-light {
+      background: var(--bg-page);
+      color: var(--text-dark);
     }
 
-    .panel {
-      background: var(--panel);
+    .content-section-dark {
+      background: #020617;
+      color: var(--text);
+    }
+
+    .panel-dark {
+      background: var(--bg-panel-dark);
       border-radius: var(--card-radius);
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 20px 55px rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-subtle-dark);
+      box-shadow: var(--shadow-soft-dark);
+      padding: 1.5rem 1.5rem 1.6rem;
+    }
+
+    .panel-light {
+      background: var(--bg-light);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-subtle-light);
+      box-shadow: var(--shadow-soft-light);
       padding: 1.5rem 1.5rem 1.6rem;
     }
 
@@ -450,15 +476,15 @@
       padding: 0.18rem 0.75rem;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted-dark);
+      background: #f9fafb;
     }
 
     .bullet-list {
       margin: 0.4rem 0 0;
       padding-left: 1.1rem;
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: var(--text-muted-dark);
     }
 
     .bullet-list li + li {
@@ -478,55 +504,100 @@
       }
     }
 
-    /* OFFERS */
+    /* SERVICES (4 main offers) */
 
-    .offers-grid {
-      margin-top: 1.6rem;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-
-    .offer-card {
-      background: var(--panel-soft);
-      border-radius: 14px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 1.05rem 1.1rem 1.2rem;
+    .services {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      font-size: 0.9rem;
+      gap: 1.4rem;
+      margin-top: 1.6rem;
     }
 
-    .offer-title {
+    .service-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 1.4rem;
+      align-items: stretch;
+      background: var(--bg-light);
+      border-radius: 18px;
+      box-shadow: var(--shadow-soft-light);
+      overflow: hidden;
+    }
+
+    .service-media {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.02);
+    }
+
+    .service-media-1::before {
+      background-image: linear-gradient(135deg, #0ea5e9, #22c55e);
+    }
+
+    .service-media-2::before {
+      background-image: linear-gradient(135deg, #6366f1, #ec4899);
+    }
+
+    .service-media-3::before {
+      background-image: linear-gradient(135deg, #f97316, #10b981);
+    }
+
+    .service-media-4::before {
+      background-image: linear-gradient(135deg, #14b8a6, #0ea5e9);
+    }
+
+    .service-body {
+      padding: 1.2rem 1.3rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid #e5e7eb;
+    }
+
+    .service-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-title {
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-dark);
     }
 
-    .offer-body {
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
+    .service-text {
+      font-size: 0.9rem;
+      color: var(--text-muted-dark);
+      margin-bottom: 0.5rem;
     }
 
-    .offer-footer {
-      margin-top: auto;
+    .service-meta {
       font-size: 0.82rem;
+      color: #6b7280;
     }
 
-    .offer-footer a::after {
-      content: " →";
-      font-size: 0.82rem;
-    }
-
-    @media (max-width: 1024px) {
-      .offers-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .offers-grid {
+    @media (max-width: 780px) {
+      .service-row {
         grid-template-columns: minmax(0, 1fr);
+      }
+      .service-body {
+        border-left: none;
+        border-top: 1px solid #e5e7eb;
+      }
+      .service-media {
+        min-height: 130px;
       }
     }
 
@@ -540,9 +611,10 @@
     }
 
     .domain-card {
-      background: var(--panel-soft);
+      background: var(--bg-light);
       border-radius: 14px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid var(--border-subtle-light);
+      box-shadow: var(--shadow-soft-light);
       padding: 1.1rem 1.1rem 1.2rem;
       font-size: 0.9rem;
     }
@@ -550,11 +622,12 @@
     .domain-card h3 {
       margin: 0 0 0.35rem;
       font-size: 0.96rem;
+      color: var(--text-dark);
     }
 
     .domain-card p {
       margin: 0;
-      color: var(--text-muted);
+      color: var(--text-muted-dark);
     }
 
     @media (max-width: 780px) {
@@ -573,19 +646,21 @@
     }
 
     .case-card {
-      background: var(--panel-soft);
+      background: var(--bg-light);
       border-radius: 14px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid var(--border-subtle-light);
+      box-shadow: var(--shadow-soft-light);
       padding: 1.05rem 1.1rem 1.2rem;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
       font-size: 0.9rem;
+      color: var(--text-muted-dark);
     }
 
     .case-tag {
       font-size: 0.8rem;
-      color: var(--text-muted);
+      color: #6b7280;
       text-transform: uppercase;
       letter-spacing: 0.14em;
     }
@@ -593,16 +668,13 @@
     .case-card h3 {
       margin: 0;
       font-size: 0.98rem;
-    }
-
-    .case-body {
-      color: var(--text-muted);
+      color: var(--text-dark);
     }
 
     .case-outcome {
       margin-top: 0.1rem;
       font-size: 0.86rem;
-      color: var(--accent);
+      color: var(--accent-strong);
     }
 
     @media (max-width: 900px) {
@@ -611,7 +683,7 @@
       }
     }
 
-    /* SPEAKING & MEDIA */
+    /* SPEAKING & MEDIA – HORIZONTAL GALLERY */
 
     .speaking-grid {
       margin-top: 1.5rem;
@@ -627,18 +699,43 @@
       }
     }
 
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.65rem;
+    .media-strip-wrapper {
+      position: relative;
+      padding-bottom: 0.4rem;
+    }
+
+    .media-strip {
+      display: flex;
+      gap: 0.9rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+
+    .media-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .media-strip::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+
+    .media-strip::-webkit-scrollbar-thumb {
+      background: #9ca3af;
+      border-radius: 999px;
     }
 
     .media-item {
       position: relative;
       overflow: hidden;
       border-radius: 12px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
+      border: 1px solid #d1d5db;
       background: #020617;
+      min-width: 220px;
+      height: 150px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
     }
 
     .media-item img {
@@ -658,10 +755,10 @@
       left: 0.7rem;
       bottom: 0.55rem;
       font-size: 0.75rem;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.82);
       padding: 0.18rem 0.45rem;
       border-radius: 999px;
-      color: var(--text-muted);
+      color: #e5e7eb;
       border: 1px solid rgba(148, 163, 184, 0.7);
     }
 
@@ -671,6 +768,7 @@
       background: #020617;
       border-top: 1px solid rgba(15, 23, 42, 0.9);
       padding: 3.2rem 1.5rem 3rem;
+      color: var(--text);
     }
 
     .contact-card {
@@ -681,6 +779,11 @@
       border: 1px solid rgba(31, 41, 55, 0.9);
       box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
       padding: 1.8rem 1.9rem 1.9rem;
+    }
+
+    .contact-card .section-title,
+    .contact-card .section-lead {
+      color: var(--text);
     }
 
     .contact-meta {
@@ -762,7 +865,7 @@
               Principal Data Scientist, TVS Motor · Founder, SimplyData
             </div>
             <p class="hero-body">
-              I design governed decision systems where AI, ML, optimization and
+              I design governed decision systems where AI, ML, optimisation and
               statistics work together under real-world constraints. Most of my
               work sits at the intersection of supply chains, operations,
               marketing and risk – in environments where decisions move
@@ -831,14 +934,14 @@
       </section>
 
       <!-- ABOUT & DECISION PHILOSOPHY -->
-      <section id="about" class="content-section">
+      <section id="about" class="content-section-light">
         <div class="section-inner">
-          <div class="panel columns-2">
+          <div class="panel-light columns-2">
             <div>
               <div class="section-kicker">About</div>
               <h2 class="section-title">About & decision philosophy</h2>
               <p class="section-lead">
-                I work at the intersection of AI, optimization and decision
+                I work at the intersection of AI, optimisation and decision
                 science – explicitly modelling uncertainty, constraints and
                 trade-offs for leadership-level decisions.
               </p>
@@ -846,7 +949,7 @@
                 My journey spans seven years of teaching and research in leading
                 business schools and over a decade of building decision systems
                 in industry. At TVS Motor, I have led high-impact work in
-                demand forecasting, inventory optimization, marketing mix
+                demand forecasting, inventory optimisation, marketing mix
                 modelling and dealer networks. Earlier, at Protiviti, I worked
                 on COVID-19 forecasting, HR and logistics optimisation,
                 and fraud analytics.
@@ -881,10 +984,10 @@
         </div>
       </section>
 
-      <!-- ENGAGE: OFFER BLOCKS -->
-      <section class="content-section">
+      <!-- SERVICES / HOW I WORK -->
+      <section class="content-section-light">
         <div class="section-inner">
-          <div class="section-kicker">Engage</div>
+          <div class="section-kicker">Services</div>
           <h2 class="section-title">How I usually work with organisations</h2>
           <p class="section-lead">
             The focus is not projects for their own sake, but decision systems
@@ -892,52 +995,68 @@
             environment changes.
           </p>
 
-          <div class="offers-grid">
-            <article class="offer-card">
-              <div class="offer-title">CXO & board advisory</div>
-              <div class="offer-body">
-                Discreet advisory for senior leaders on high-stakes decisions
-                where analytics, experience and politics collide. Structuring
-                choices, clarifying trade-offs and stress-testing assumptions.
-              </div>
-              <div class="offer-footer">
-                <a href="#work-with-me">Explore advisory</a>
-              </div>
-            </article>
-
-            <article class="offer-card">
-              <div class="offer-title">Enterprise decision systems</div>
-              <div class="offer-body">
-                Architecting systems that combine forecasting, optimisation,
-                simulation and governance – e.g. MEIO, allocation, network
-                design, MMM+MTA, capacity and scheduling.
-              </div>
-              <div class="offer-footer">
-                <a href="#cases">View examples</a>
+          <div class="services">
+            <article class="service-row">
+              <div class="service-media service-media-1"></div>
+              <div class="service-body">
+                <div class="service-kicker">Advisory</div>
+                <div class="service-title">CXO & board advisory</div>
+                <div class="service-text">
+                  Discreet advisory for senior leaders on high-stakes decisions
+                  where analytics, experience and politics collide. Structuring
+                  choices, clarifying trade-offs and stress-testing assumptions.
+                </div>
+                <div class="service-meta">
+                  Best suited when you need a thinking partner, not a large consulting team.
+                </div>
               </div>
             </article>
 
-            <article class="offer-card">
-              <div class="offer-title">Executive programmes</div>
-              <div class="offer-body">
-                Senior-only programmes on AI, ML, OR and decision-making for
-                manufacturing, pharma, healthcare and retail – depth without
-                buzzwords, focused on decision maturity.
-              </div>
-              <div class="offer-footer">
-                <a href="#intellectual">See teaching footprint</a>
+            <article class="service-row">
+              <div class="service-media service-media-2"></div>
+              <div class="service-body">
+                <div class="service-kicker">Systems</div>
+                <div class="service-title">Enterprise decision systems</div>
+                <div class="service-text">
+                  Architecting systems that combine forecasting, optimisation,
+                  simulation and governance – MEIO, allocation, network design,
+                  MMM+MTA, capacity and scheduling – under real constraints.
+                </div>
+                <div class="service-meta">
+                  Ideal when local analytics exists, but no coherent decision system has emerged.
+                </div>
               </div>
             </article>
 
-            <article class="offer-card">
-              <div class="offer-title">Venture & ecosystem support</div>
-              <div class="offer-body">
-                Selective work with analytics and product ventures where
-                decision science is a core differentiator – including SimplyData
-                and sector-specific decision platforms.
+            <article class="service-row">
+              <div class="service-media service-media-3"></div>
+              <div class="service-body">
+                <div class="service-kicker">Capability</div>
+                <div class="service-title">Executive programmes</div>
+                <div class="service-text">
+                  Senior-only programmes on AI, ML, OR and decision-making for
+                  manufacturing, pharma, healthcare and retail – depth without
+                  buzzwords, focused on decision maturity.
+                </div>
+                <div class="service-meta">
+                  Designed for leadership offsites, academies and high-potential cohorts.
+                </div>
               </div>
-              <div class="offer-footer">
-                <a href="#contact">Start a conversation</a>
+            </article>
+
+            <article class="service-row">
+              <div class="service-media service-media-4"></div>
+              <div class="service-body">
+                <div class="service-kicker">Ventures</div>
+                <div class="service-title">Venture & ecosystem support</div>
+                <div class="service-text">
+                  Selective work with analytics and product ventures where
+                  decision science is a core differentiator – including SimplyData
+                  and sector-specific decision platforms.
+                </div>
+                <div class="service-meta">
+                  For founders who want decision science as a product moat, not an add-on.
+                </div>
               </div>
             </article>
           </div>
@@ -945,70 +1064,66 @@
       </section>
 
       <!-- DOMAINS -->
-      <section id="domains" class="content-section">
+      <section id="domains" class="content-section-light">
         <div class="section-inner">
-          <div class="panel">
-            <div class="section-kicker">Domains</div>
-            <h2 class="section-title">Where decision science creates leverage</h2>
-            <p class="section-lead">
-              I tend to focus on environments where decisions span multiple time
-              horizons and stakeholders, and where the cost of naive
-              optimisation or local analytics is material.
-            </p>
+          <div class="section-kicker">Domains</div>
+          <h2 class="section-title">Where decision science creates leverage</h2>
+          <p class="section-lead">
+            I focus on environments where decisions span multiple time horizons
+            and stakeholders, and where the cost of naive optimisation or local
+            analytics is material.
+          </p>
 
-            <div class="domains-grid">
-              <article class="domain-card">
-                <h3>Enterprise decision systems</h3>
-                <p>
-                  When decisions span supply chain, commercial and finance; when
-                  local KPIs fight each other; and when no one owns the full
-                  decision loop. Here, architecture and governance matter as
-                  much as algorithms.
-                </p>
-              </article>
+          <div class="domains-grid">
+            <article class="domain-card">
+              <h3>Enterprise decision systems</h3>
+              <p>
+                When decisions span supply chain, commercial and finance; when
+                local KPIs fight each other; and when no one owns the full
+                decision loop. Architecture and governance matter as much as algorithms.
+              </p>
+            </article>
 
-              <article class="domain-card">
-                <h3>Hybrid ML + optimisation</h3>
-                <p>
-                  When good predictions are not enough – pricing, inventory,
-                  scheduling, routing, marketing allocation – and constraints,
-                  scenarios and risk must be explicit in the decision logic.
-                </p>
-              </article>
+            <article class="domain-card">
+              <h3>Hybrid ML + optimisation</h3>
+              <p>
+                When good predictions are not enough – pricing, inventory,
+                scheduling, routing, marketing allocation – and constraints,
+                scenarios and risk must be explicit in the decision logic.
+              </p>
+            </article>
 
-              <article class="domain-card">
-                <h3>Operations research & planning</h3>
-                <p>
-                  When combinatorial complexity and inter-dependencies defeat
-                  heuristics: multi-echelon inventory, allocation, network
-                  design, plant-AWH-dealer flows, capacity and workforce
-                  planning.
-                </p>
-              </article>
+            <article class="domain-card">
+              <h3>Operations research & planning</h3>
+              <p>
+                When combinatorial complexity and inter-dependencies defeat
+                heuristics: multi-echelon inventory, allocation, network
+                design, plant–AWH–dealer flows, capacity and workforce planning.
+              </p>
+            </article>
 
-              <article class="domain-card">
-                <h3>Statistical modelling & risk</h3>
-                <p>
-                  When leadership needs ranges, scenarios and downside
-                  protection – not a single number – for demand, risk, campaign
-                  response or pandemic curves.
-                </p>
-              </article>
-            </div>
+            <article class="domain-card">
+              <h3>Statistical modelling & risk</h3>
+              <p>
+                When leadership needs ranges, scenarios and downside protection
+                – not a single number – for demand, risk, campaign response or
+                pandemic curves.
+              </p>
+            </article>
+          </div>
 
-            <div class="pill-list">
-              <span class="pill">Automotive & manufacturing</span>
-              <span class="pill">Healthcare & hospitals</span>
-              <span class="pill">Retail & channel networks</span>
-              <span class="pill">Financial services & fraud</span>
-              <span class="pill">Public systems & policy</span>
-            </div>
+          <div class="pill-list">
+            <span class="pill">Automotive & manufacturing</span>
+            <span class="pill">Healthcare & hospitals</span>
+            <span class="pill">Retail & channel networks</span>
+            <span class="pill">Financial services & fraud</span>
+            <span class="pill">Public systems & policy</span>
           </div>
         </div>
       </section>
 
       <!-- CASE SYSTEMS -->
-      <section id="cases" class="content-section">
+      <section id="cases" class="content-section-light">
         <div class="section-inner">
           <div class="section-kicker">Selected work</div>
           <h2 class="section-title">Flagship decision systems</h2>
@@ -1021,7 +1136,7 @@
             <article class="case-card">
               <div class="case-tag">Manufacturing · Forecasting & MEIO</div>
               <h3>Demand forecasting + end-to-end inventory optimisation (TVS)</h3>
-              <div class="case-body">
+              <div>
                 Integrated demand forecasting, inventory policy design and
                 multi-echelon optimisation across plants, AWHs and 1,300+
                 dealers – making uncertainty and service trade-offs explicit.
@@ -1035,7 +1150,7 @@
             <article class="case-card">
               <div class="case-tag">Manufacturing · Marketing decisions</div>
               <h3>Bayesian MMM + MTA decision framework (TVS)</h3>
-              <div class="case-body">
+              <div>
                 Built a joint MMM + MTA system to separate portfolio-level
                 budget moves from within-channel decisions, under limited
                 experimentation and noisy signals.
@@ -1049,7 +1164,7 @@
             <article class="case-card">
               <div class="case-tag">Automotive · Process optimisation</div>
               <h3>Paint transfer efficiency – hybrid ML + OR + DOE</h3>
-              <div class="case-body">
+              <div>
                 Combined design of experiments, machine learning and
                 optimisation to improve paint transfer efficiency under real
                 shop-floor constraints.
@@ -1063,7 +1178,7 @@
             <article class="case-card">
               <div class="case-tag">Healthcare · Centre effectiveness</div>
               <h3>Healthcare centre effectiveness using DEA</h3>
-              <div class="case-body">
+              <div>
                 Built a DEA-based framework to benchmark centres on efficiency
                 and effectiveness across throughput, resource utilisation and
                 service outcomes.
@@ -1077,7 +1192,7 @@
             <article class="case-card">
               <div class="case-tag">Healthcare · Patient flow</div>
               <h3>Patient waiting time reduction using queuing & simulation</h3>
-              <div class="case-body">
+              <div>
                 Used queuing theory and AnyLogic simulation to re-design
                 outpatient flow, staffing and appointment rules across multiple
                 scenarios.
@@ -1091,7 +1206,7 @@
             <article class="case-card">
               <div class="case-tag">Public health · Pandemic forecasting</div>
               <h3>COVID-19 forecasting & scenario modelling</h3>
-              <div class="case-body">
+              <div>
                 Co-developed forecasting and scenario systems during early
                 COVID-19 waves, combining epidemiological and time-series
                 models to inform communication and planning.
@@ -1105,7 +1220,7 @@
             <article class="case-card">
               <div class="case-tag">Telecom · Fraud analytics</div>
               <h3>Wangiri (single-ring) fraud detection system</h3>
-              <div class="case-body">
+              <div>
                 Built near real-time fraud detection on call-detail records,
                 combining probabilistic scoring and ML to prioritise alerts and
                 reduce false positives.
@@ -1120,9 +1235,9 @@
       </section>
 
       <!-- SPEAKING & MEDIA -->
-      <section id="speaking" class="content-section">
+      <section id="speaking" class="content-section-light">
         <div class="section-inner">
-          <div class="panel speaking-grid">
+          <div class="panel-light speaking-grid">
             <div>
               <div class="section-kicker">Speaking & media</div>
               <h2 class="section-title">Conversations with leaders</h2>
@@ -1139,22 +1254,24 @@
                 <li>Invited talks at leading Indian business schools.</li>
               </ul>
             </div>
-            <div class="media-grid">
-              <div class="media-item">
-                <img src="media-peoplematters.jpg" alt="PeopleMatters discussion" />
-                <div class="media-caption">PeopleMatters · Analytics & decisions</div>
-              </div>
-              <div class="media-item">
-                <img src="media-automotive.jpg" alt="Automotive talk" />
-                <div class="media-caption">TVS · Automotive decision trees</div>
-              </div>
-              <div class="media-item">
-                <img src="media-dcal.jpg" alt="DCAL keynote" />
-                <div class="media-caption">DCAL · Intelligent supply chains</div>
-              </div>
-              <div class="media-item">
-                <img src="media-workshop.jpg" alt="CXO workshop" />
-                <div class="media-caption">CXO workshop · Data & strategy</div>
+            <div class="media-strip-wrapper">
+              <div class="media-strip">
+                <div class="media-item">
+                  <img src="media-peoplematters.jpg" alt="PeopleMatters discussion" />
+                  <div class="media-caption">PeopleMatters · Analytics & decisions</div>
+                </div>
+                <div class="media-item">
+                  <img src="media-automotive.jpg" alt="Automotive talk" />
+                  <div class="media-caption">TVS · Automotive decision trees</div>
+                </div>
+                <div class="media-item">
+                  <img src="media-dcal.jpg" alt="DCAL keynote" />
+                  <div class="media-caption">DCAL · Intelligent supply chains</div>
+                </div>
+                <div class="media-item">
+                  <img src="media-workshop.jpg" alt="CXO workshop" />
+                  <div class="media-caption">CXO workshop · Data & strategy</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1162,16 +1279,16 @@
       </section>
 
       <!-- INTELLECTUAL CAPITAL -->
-      <section id="intellectual" class="content-section">
+      <section id="intellectual" class="content-section-light">
         <div class="section-inner">
-          <div class="panel">
+          <div class="panel-light">
             <div class="section-kicker">Research & teaching</div>
             <h2 class="section-title">Intellectual capital</h2>
 
             <div class="two-up">
               <div>
-                <h3>Research & publications</h3>
-                <p>
+                <h3 style="color:#0f172a;">Research & publications</h3>
+                <p class="section-lead" style="margin-bottom:0.6rem;">
                   PhD in Operations Research with 40+ peer-reviewed publications
                   across optimisation, analytics and applied decision science –
                   in manufacturing, healthcare, public systems and enterprise
@@ -1186,7 +1303,7 @@
                 </p>
               </div>
               <div>
-                <h3>Decision frameworks</h3>
+                <h3 style="color:#0f172a;">Decision frameworks</h3>
                 <ul class="bullet-list">
                   <li>Enterprise decision architecture framework.</li>
                   <li>Hybrid ML–optimisation system design patterns.</li>
@@ -1198,8 +1315,8 @@
 
             <div class="two-up" style="margin-top:2rem;">
               <div>
-                <h3>Teaching & capability building</h3>
-                <p>
+                <h3 style="color:#0f172a;">Teaching & capability building</h3>
+                <p class="section-lead" style="margin-bottom:0;">
                   Continuous teaching of ML, OR, SCM, OM, business simulation,
                   AI, business statistics, risk analytics, deep learning and
                   GenAI across Amity, IIFT, FIIB, IMT Ghaziabad, IMT CDL,
@@ -1207,8 +1324,8 @@
                 </p>
               </div>
               <div>
-                <h3>Communities & governance</h3>
-                <p>
+                <h3 style="color:#0f172a;">Communities & governance</h3>
+                <p class="section-lead" style="margin-bottom:0;">
                   Active in communities of practice on operations research and
                   analytics, helping organisations move from proofs-of-concept
                   to governed decision systems aligned with strategy and risk
@@ -1221,9 +1338,9 @@
       </section>
 
       <!-- WORK WITH ME -->
-      <section id="work-with-me" class="content-section">
+      <section id="work-with-me" class="content-section-light">
         <div class="section-inner">
-          <div class="panel">
+          <div class="panel-light">
             <div class="section-kicker">Engage</div>
             <h2 class="section-title">Work with me</h2>
             <p class="section-lead">
@@ -1234,7 +1351,7 @@
 
             <div class="two-up">
               <div>
-                <h3>Modes of engagement</h3>
+                <h3 style="color:#0f172a;">Modes of engagement</h3>
                 <ul class="bullet-list">
                   <li>
                     <strong>Enterprise decision consulting</strong> – end-to-end
@@ -1253,7 +1370,7 @@
                 </ul>
               </div>
               <div>
-                <h3>When to reach out</h3>
+                <h3 style="color:#0f172a;">When to reach out</h3>
                 <ul class="bullet-list">
                   <li>
                     When decisions cut across functions and local KPIs conflict.
@@ -1267,7 +1384,7 @@
                     business reality – not just tools.
                   </li>
                 </ul>
-                <p style="margin-top:0.8rem;">
+                <p style="margin-top:0.8rem;font-size:0.9rem;color:var(--text-muted-dark);">
                   A short, structured conversation is usually the best starting
                   point.
                 </p>
